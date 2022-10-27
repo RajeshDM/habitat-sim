@@ -135,7 +135,8 @@ if(BUILD_PYTHON_BINDINGS)
   endif()
 endif()
 
-if(BUILD_WITH_BULLET AND NOT USE_SYSTEM_BULLET)
+#if(BUILD_WITH_BULLET AND NOT USE_SYSTEM_BULLET)
+if((BUILD_WITH_BULLET OR BUILD_WITH_MUJOCO) AND NOT USE_SYSTEM_BULLET)
   # The below block except for the visiblity patch verbatim copied from
   # https://doc.magnum.graphics/magnum/namespaceMagnum_1_1BulletIntegration.html
 
@@ -294,7 +295,8 @@ if(NOT USE_SYSTEM_MAGNUM)
     set(MAGNUM_WITH_OPENEXRIMAGECONVERTER ON CACHE BOOL "" FORCE)
   endif()
 
-  if(BUILD_WITH_BULLET)
+#  if(BUILD_WITH_BULLET)
+  if(BUILD_WITH_BULLET OR BUILD_WITH_MUJOCO)
     # Build Magnum's BulletIntegration
     set(MAGNUM_WITH_BULLET ON CACHE BOOL "" FORCE)
   else()

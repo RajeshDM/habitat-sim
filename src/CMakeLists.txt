@@ -37,6 +37,9 @@ option(BUILD_GUI_VIEWERS "Whether to build GUI viewer utility binary" OFF)
 option(BUILD_WITH_BULLET
        "Build Habitat-Sim with Bullet physics enabled -- Requires Bullet" OFF
 )
+option(BUILD_WITH_MUJOCO
+       "Build Habitat-Sim with Bullet physics enabled -- Requires Bullet" OFF
+)
 option(
   BUILD_WEB_APPS
   "(Emscripten-build-only) build and bundle our html/Javascript demo web apps including test_page.html and bindings.html"

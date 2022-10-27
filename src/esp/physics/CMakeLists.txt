@@ -45,6 +45,12 @@ if(BUILD_WITH_BULLET)
   target_link_libraries(physics PUBLIC bulletphysics)
 endif()
 
+if(BUILD_WITH_MUJOCO)
+  add_subdirectory(mujoco)
+
+  target_link_libraries(physics PUBLIC bulletphysics)
+endif()
+
 target_link_libraries(
   physics
   PUBLIC core

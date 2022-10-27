@@ -94,6 +94,15 @@ Use "HEADLESS=True pip install ." to build in headless mode with pip""",
         help="Forces cmake to be rerun.  This argument is not cached",
     )
     parser.add_argument(
+        "--mujoco",
+        "--with-mujoco",
+        dest="with_mujoco",
+        default=str2bool(os.environ.get("WITH_MUJOCO", str(is_pip()))),
+        action="store_true",
+        help="""Build with Bullet simulation engine. Default to True when pip installing.
+         Default value is otherwise false or provided  WITH_MUJOCO=ON or WITH_MUJOCO_OFF when doing pip install.""",
+    )
+    parser.add_argument(
         "--build-tests", dest="build_tests", action="store_true", help="Build tests"
     )
     parser.add_argument(
@@ -331,6 +340,9 @@ class CMakeBuild(build_ext):
         ]
         cmake_args += [
             "-DBUILD_DATATOOL={}".format("ON" if args.build_datatool else "OFF")
+        ]
+        cmake_args += [
+            "-DBUILD_WITH_MUJOCO={}".format("ON" if args.with_bullet else "OFF")
         ]
         cmake_args += ["-DBUILD_WITH_CUDA={}".format("ON" if args.with_cuda else "OFF")]
         cmake_args += [
